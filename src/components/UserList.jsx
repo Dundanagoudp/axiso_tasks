@@ -3,6 +3,8 @@ import { UserData } from "../api/userapi";
 
 export const UserList = () => {
   const [users, setUsers] = useState([]);
+  const [loading, setLoading] = useState(true);
+
 
   const fetchUsersData = async () => {
     try {
@@ -13,6 +15,7 @@ export const UserList = () => {
         setUsers(res);
       } else if (res && res.data && Array.isArray(res.data)) {
         setUsers(res.data);
+        setLoading(false);
       } else {
         console.error("Unexpected response format", res);
       }
@@ -26,6 +29,9 @@ export const UserList = () => {
     fetchUsersData();
   }, []);
 
+  if (loading) {
+      return <div>Loading...</div>;
+    }
   return (
     <div>
       <h1>User List</h1>
