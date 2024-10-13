@@ -1,0 +1,102 @@
+body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+      margin: 0;
+      padding: 20px;
+    }
+    
+    h1 {
+      text-align: center;
+      font-size: 2rem;
+      color: #333;
+      margin-bottom: 20px;
+    }
+    
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    
+    .user-card {
+      background-color: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: 5px solid transparent; /* Make space for gradient border */
+      position: relative; /* For absolute positioning of the pseudo-element */
+    }
+    
+    .user-card::before {
+      content: '';
+      position: absolute;
+      top: -5px;
+      left: -5px;
+      right: -5px;
+      bottom: -5px;
+      border-radius: 15px;
+      background: linear-gradient(270deg, #000, #434343, #000);
+      background-size: 400% 400%;
+      animation: gradient-animation 10s ease infinite;
+      z-index: -1; /* Place it behind the user card */
+    }
+    
+    @keyframes gradient-animation {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+    
+    .user-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+    }
+    
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+    
+    ul li {
+      padding: 5px 0;
+    }
+    
+    p {
+      margin: 10px 0;
+      color: #555;
+    }
+    
+    strong {
+      color: #1C2B78;
+    }
+    
+    .user-card ul {
+      background-color: #f9f9f9;
+      padding: 10px;
+      border-radius: 5px;
+    }
+    
+    .geo {
+      color: #888;
+      font-style: italic;
+    }
+    
+    @media (max-width: 768px) {
+      .grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    
